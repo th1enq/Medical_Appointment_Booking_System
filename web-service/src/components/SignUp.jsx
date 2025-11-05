@@ -1,14 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useContext } from "react"
 import PropTypes from "prop-types"
 import { Calendar, Heart, Shield, Sparkles, Eye, EyeOff } from "lucide-react"
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { use } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
+
 const INITIAL_FORM = {username: "", email:"", password:"", confirmpassword:""}
 const SignUp = () => {
+  const navigate = useNavigate();
+  const { setToken } = useContext(AppContext);
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -17,9 +22,30 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    if (!formData.username || !formData.email || !formData.password || !formData.confirmpassword) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (formData.password !== formData.confirmpassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
     setIsLoading(true)
+    
+    // Mock signup - trong thực tế sẽ gọi API
     await new Promise((resolve) => setTimeout(resolve, 1500))
+    
+    // Mock successful signup
+    const mockToken = 'mock-token-' + Date.now();
+    localStorage.setItem('token', mockToken);
+    setToken(mockToken);
+    
+    toast.success('Account created successfully!');
     setIsLoading(false)
+    navigate('/');
   }
 
   const fields = [

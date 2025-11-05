@@ -1,12 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useContext } from "react"
 import PropTypes from "prop-types"
 import { Calendar, Heart, Shield, Sparkles, Eye, EyeOff } from "lucide-react"
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
+
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { setToken } = useContext(AppContext);
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -14,9 +19,25 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    if (!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
     setIsLoading(true)
+    
+    // Mock login - trong thực tế sẽ gọi API
     await new Promise((resolve) => setTimeout(resolve, 1500))
+    
+    // Mock successful login
+    const mockToken = 'mock-token-' + Date.now();
+    localStorage.setItem('token', mockToken);
+    setToken(mockToken);
+    
+    toast.success('Login successful!');
     setIsLoading(false)
+    navigate('/');
   }
 
   return (
