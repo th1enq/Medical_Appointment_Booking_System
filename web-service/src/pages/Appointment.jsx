@@ -106,7 +106,7 @@ const Appointment = () => {
     }
 
     return (
-        <div className="mx-4 sm:mx-[10%] py-16">
+        <div className="mx-4 sm:mx-[10%] py-16 mt-10">
             {/* Doctor Details */}
             <div className="flex flex-col md:flex-row gap-8 mb-12">
                 {/* Doctor Image */}
