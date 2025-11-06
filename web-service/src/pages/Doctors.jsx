@@ -56,11 +56,11 @@ const Doctors = () => {
     };
 
     return (
-        <div className="pt-24 pb-16 min-h-screen bg-linear-to-b from-gray-50 to-white">
+        <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-gray-50 to-white">
             {/* Header Section */}
             <div className="mx-4 sm:mx-[10%] mb-12">
                 <div className="text-center mb-8 animate-slideUp">
-                    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 mb-4">
                         Find Your Doctor
                     </h1>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ const Doctors = () => {
                                         onClick={() => filterBySpeciality('All')}
                                         className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                                             selectedSpeciality === 'All'
-                                                ? 'bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
+                                                ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
                                                 : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
                                         }`}
                                     >
@@ -133,7 +133,7 @@ const Doctors = () => {
                                             onClick={() => filterBySpeciality(item.speciality)}
                                             className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                                                 selectedSpeciality === item.speciality
-                                                    ? 'bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
+                                                    ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
                                                     : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
                                             }`}
                                         >

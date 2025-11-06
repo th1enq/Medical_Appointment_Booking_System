@@ -63,12 +63,12 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="pt-24 pb-16 min-h-screen bg-linear-to-b from-gray-50 to-white">
+        <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-4 sm:mx-[10%]">
                 <div className="max-w-6xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12 animate-slideUp">
-                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 mb-4">
                             My Profile
                         </h1>
                         <p className="text-gray-600 text-lg">
@@ -141,7 +141,7 @@ const MyProfile = () => {
                             <div className="flex gap-4 justify-center mb-12 flex-wrap">
                                 <button
                                     onClick={() => setIsEdit(true)}
-                                    className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -164,7 +164,7 @@ const MyProfile = () => {
                             <div className="flex gap-4 justify-center mb-12 flex-wrap">
                                 <button
                                     onClick={handleSaveProfile}
-                                    className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-green-600 to-emerald-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -193,7 +193,7 @@ const MyProfile = () => {
                         {/* Information Grid */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {/* Contact Information */}
-                            <div className="bg-linear-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
+                            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                                     <span className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -274,7 +274,7 @@ const MyProfile = () => {
                             </div>
 
                             {/* Basic Information */}
-                            <div className="bg-linear-to-br from-cyan-50 to-blue-50 rounded-2xl p-6 border border-cyan-100">
+                            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-6 border border-cyan-100">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                                     <span className="w-10 h-10 bg-cyan-600 rounded-xl flex items-center justify-center">
                                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -377,7 +377,7 @@ const MyProfile = () => {
                         <div className="flex gap-4 mt-8">
                             <button
                                 onClick={handleChangePassword}
-                                className="flex-1 px-6 py-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+                                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
                             >
                                 Change Password
                             </button>

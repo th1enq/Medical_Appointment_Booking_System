@@ -16,6 +16,12 @@ import DoctorLanding from './pages/DoctorLanding'
 import DoctorDashboard from './pages/DoctorDashboard'
 import DoctorAppointments from './pages/DoctorAppointments'
 import DoctorProfile from './pages/DoctorProfile'
+import AdminLayout from './components/AdminLayout'
+import AdminLanding from './pages/AdminLanding'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminAppointments from './pages/AdminAppointments'
+import AdminAddDoctor from './pages/AdminAddDoctor'
+import AdminDoctorsList from './pages/AdminDoctorsList'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -23,10 +29,11 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   const location = useLocation();
   
-  // Check if current route is login, signup, or doctor routes
+  // Check if current route is login, signup, doctor dashboard routes (not /doctors), or admin routes
   const hideLayout = location.pathname === '/login' || 
                      location.pathname === '/signup' || 
-                     location.pathname.startsWith('/doctor');
+                     (location.pathname.startsWith('/doctor') && location.pathname !== '/doctors' && !location.pathname.startsWith('/doctors/')) ||
+                     location.pathname.startsWith('/admin');
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -51,6 +58,15 @@ const App = () => {
               <Route path="dashboard" element={<DoctorDashboard />} />
               <Route path="appointments" element={<DoctorAppointments />} />
               <Route path="profile" element={<DoctorProfile />} />
+            </Route>
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLanding />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="appointments" element={<AdminAppointments />} />
+              <Route path="add-doctor" element={<AdminAddDoctor />} />
+              <Route path="doctors-list" element={<AdminDoctorsList />} />
             </Route>
         </Routes>
       </main>

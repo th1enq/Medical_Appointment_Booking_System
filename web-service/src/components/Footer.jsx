@@ -4,7 +4,7 @@ import { assets } from '../assets_frontend/assets';
 
 const Footer = () => {
     return (
-        <footer className="relative bg-linear-to-br from-gray-900 via-blue-900 to-gray-900 text-white mt-20 overflow-hidden">
+        <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white mt-20 overflow-hidden">
             {/* Animated Background Elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
@@ -45,7 +45,7 @@ const Footer = () => {
 
                     {/* Company Links */}
                     <div>
-                        <h3 className="text-xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-400">COMPANY</h3>
+                        <h3 className="text-xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">COMPANY</h3>
                         <ul className="space-y-3">
                             <li>
                                 <Link to="/" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
@@ -72,7 +72,7 @@ const Footer = () => {
 
                     {/* Get in Touch */}
                     <div>
-                        <h3 className="text-xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-blue-400">GET IN TOUCH</h3>
+                        <h3 className="text-xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">GET IN TOUCH</h3>
                         <ul className="space-y-4">
                             <li className="flex items-center gap-3 text-gray-300">
                                 <div className="w-10 h-10 bg-blue-600/20 rounded-full flex items-center justify-center">

@@ -79,7 +79,7 @@ const DoctorSidebar = () => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 group ${
                 isActive
-                  ? 'bg-linear-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
+                  ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'
               }`
             }
@@ -94,7 +94,7 @@ const DoctorSidebar = () => {
       </nav>
 
       {/* Bottom Section */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-200 bg-linear-to-br from-blue-50 to-indigo-50">
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-200 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="flex items-center gap-3 mb-3">
           <img 
             src={doctorInfo.avatar} 

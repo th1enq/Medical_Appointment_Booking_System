@@ -8,19 +8,19 @@ const DoctorCard = ({ doctor }) => {
             className="group relative bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer card-hover"
         >
             {/* Gradient Border Effect */}
-            <div className="absolute inset-0 bg-linear-to-br from-blue-500 via-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute inset-0.5 bg-white rounded-2xl"></div>
             
             <div className="relative z-10">
                 {/* Doctor Image with Overlay */}
-                <div className="relative bg-linear-to-br from-blue-50 to-cyan-50 overflow-hidden">
+                <div className="relative bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
                     <img 
                         src={doctor.image} 
                         alt={doctor.name}
                         className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* Experience Badge */}
                     <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg">
@@ -28,7 +28,7 @@ const DoctorCard = ({ doctor }) => {
                     </div>
                     
                     {/* Fees Badge */}
-                    <div className="absolute bottom-3 left-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white px-4 py-2 rounded-full shadow-lg">
+                    <div className="absolute bottom-3 left-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-4 py-2 rounded-full shadow-lg">
                         <span className="text-sm font-bold">${doctor.fees}</span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ const DoctorCard = ({ doctor }) => {
 
                     {/* Book Button - Only visible on hover */}
                     <div className="mt-4 overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300">
-                        <button className="w-full bg-linear-to-r from-blue-600 to-cyan-500 text-white py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                        <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
                             Book Appointment
                         </button>
                     </div>

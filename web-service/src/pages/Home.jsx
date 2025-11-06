@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className="pt-16">
             {/* Hero Section - Modern Gradient Design */}
-            <section className="relative bg-linear-to-br from-blue-600 via-cyan-500 to-blue-700 text-white overflow-hidden">
+            <section className="relative bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700 text-white overflow-hidden">
                 {/* Animated Background Elements */}
                 <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-slow"></div>
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300/10 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: '1s'}}></div>
@@ -21,7 +21,7 @@ const Home = () => {
                         
                         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                             Book Appointment<br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-300 to-pink-300">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300">
                                 With Trusted Doctors
                             </span>
                         </h1>
@@ -60,7 +60,7 @@ const Home = () => {
 
                     {/* Right Image */}
                     <div className="flex-1 relative animate-fadeIn">
-                        <div className="absolute inset-0 bg-linear-to-t from-blue-600/50 to-transparent rounded-3xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent rounded-3xl"></div>
                         <img 
                             src={assets.header_img} 
                             alt="Doctors" 
@@ -82,13 +82,13 @@ const Home = () => {
             {/* Find by Speciality Section */}
             <section className="mx-4 sm:mx-[10%] py-20 relative">
                 {/* Background decoration */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-blue-100 to-cyan-100 rounded-full blur-3xl opacity-50 -z-10"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full blur-3xl opacity-50 -z-10"></div>
                 
                 <div className="text-center mb-16 animate-slideUp">
-                    <div className="inline-block mb-4 px-4 py-2 bg-linear-to-r from-blue-100 to-cyan-100 rounded-full text-blue-600 text-sm font-semibold">
+                    <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full text-blue-600 text-sm font-semibold">
                         Explore Specialists
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 mb-4">
                         Find by Speciality
                     </h2>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -107,12 +107,12 @@ const Home = () => {
                             style={{animationDelay: `${index * 0.1}s`}}
                         >
                             {/* Gradient border effect */}
-                            <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                             <div className="absolute inset-0.5 bg-white rounded-2xl"></div>
                             
                             {/* Content */}
                             <div className="relative z-10">
-                                <div className="w-20 h-20 bg-linear-to-br from-blue-50 to-cyan-50 rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-20 h-20 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                                     <img src={item.image} alt={item.speciality} className="w-12" />
                                 </div>
                                 <span className="text-sm text-gray-700 text-center font-semibold group-hover:text-blue-600 transition-colors">
@@ -125,12 +125,12 @@ const Home = () => {
             </section>
 
             {/* Top Doctors Section */}
-            <section className="mx-4 sm:mx-[10%] py-20 bg-linear-to-b from-gray-50 to-white rounded-3xl">
+            <section className="mx-4 sm:mx-[10%] py-20 bg-gradient-to-b from-gray-50 to-white rounded-3xl">
                 <div className="text-center mb-16 animate-slideUp">
-                    <div className="inline-block mb-4 px-4 py-2 bg-linear-to-r from-blue-100 to-cyan-100 rounded-full text-blue-600 text-sm font-semibold">
+                    <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full text-blue-600 text-sm font-semibold">
                         Top Doctors
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-600 mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 mb-4">
                         Top Doctors to Book
                     </h2>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -155,7 +155,7 @@ const Home = () => {
                 <div className="text-center">
                     <Link
                         to="/doctors"
-                        className="group inline-flex items-center gap-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                        className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
                     >
                         View All Doctors
                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@ const Home = () => {
 
             {/* Banner Section - Modern CTA */}
             <section className="mx-4 sm:mx-[10%] py-20">
-                <div className="relative bg-linear-to-br from-blue-600 via-cyan-500 to-blue-700 rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700 rounded-3xl overflow-hidden shadow-2xl">
                     {/* Animated Background */}
                     <div className="absolute top-0 left-0 w-full h-full">
                         <div className="absolute top-10 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-slow"></div>

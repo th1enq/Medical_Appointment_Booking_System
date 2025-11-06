@@ -66,7 +66,7 @@ const LoginPage = () => {
             `}
         </style>
 
-      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-teal-50 via-white to-purple-50 p-4 relative overflow-hidden">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-white to-purple-50 p-4 relative overflow-hidden">
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center relative z-10">
           {/* Left side */}
           <div className="hidden lg:flex flex-col gap-8 animate-slide-in-left">

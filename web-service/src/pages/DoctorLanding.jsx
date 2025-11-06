@@ -26,7 +26,7 @@ const DoctorLanding = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -top-48 -left-48 animate-pulse-slow"></div>
@@ -46,7 +46,7 @@ const DoctorLanding = () => {
 
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                 Welcome to Your
-                <span className="block bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-indigo-400 mt-2">
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 mt-2">
                   Medical Dashboard
                 </span>
               </h1>
@@ -58,7 +58,7 @@ const DoctorLanding = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/doctor/dashboard"
-                  className="px-8 py-4 bg-linear-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
                 >
                   <span>Go to Dashboard</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ const DoctorLanding = () => {
             {/* Right Content - Features Cards */}
             <div className="space-y-6 animate-slideUp" style={{ animationDelay: '0.2s' }}>
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-1">
-                <div className="w-14 h-14 bg-linear-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -103,7 +103,7 @@ const DoctorLanding = () => {
               </div>
 
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-1">
-                <div className="w-14 h-14 bg-linear-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -113,7 +113,7 @@ const DoctorLanding = () => {
               </div>
 
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-1">
-                <div className="w-14 h-14 bg-linear-to-br from-violet-400 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-violet-400 to-purple-500 rounded-xl flex items-center justify-center mb-4">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>

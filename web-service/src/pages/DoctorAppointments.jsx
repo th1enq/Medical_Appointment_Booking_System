@@ -76,7 +76,7 @@ const DoctorAppointments = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-slate-600">Loading appointments...</p>
@@ -86,7 +86,7 @@ const DoctorAppointments = () => {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 animate-fadeIn">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 animate-fadeIn">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
@@ -102,7 +102,7 @@ const DoctorAppointments = () => {
               onClick={() => setFilterStatus('all')}
               className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
                 filterStatus === 'all'
-                  ? 'bg-linear-to-r from-blue-500 to-indigo-600 text-white shadow-md transform scale-105'
+                  ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md transform scale-105'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -113,7 +113,7 @@ const DoctorAppointments = () => {
               onClick={() => setFilterStatus('pending')}
               className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
                 filterStatus === 'pending'
-                  ? 'bg-linear-to-r from-amber-500 to-orange-600 text-white shadow-md transform scale-105'
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md transform scale-105'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -126,7 +126,7 @@ const DoctorAppointments = () => {
               onClick={() => setFilterStatus('confirmed')}
               className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
                 filterStatus === 'confirmed'
-                  ? 'bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-md transform scale-105'
+                  ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-md transform scale-105'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -139,7 +139,7 @@ const DoctorAppointments = () => {
               onClick={() => setFilterStatus('completed')}
               className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
                 filterStatus === 'completed'
-                  ? 'bg-linear-to-r from-emerald-500 to-teal-600 text-white shadow-md transform scale-105'
+                  ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md transform scale-105'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -152,7 +152,7 @@ const DoctorAppointments = () => {
               onClick={() => setFilterStatus('cancelled')}
               className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
                 filterStatus === 'cancelled'
-                  ? 'bg-linear-to-r from-red-500 to-rose-600 text-white shadow-md transform scale-105'
+                  ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-md transform scale-105'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >

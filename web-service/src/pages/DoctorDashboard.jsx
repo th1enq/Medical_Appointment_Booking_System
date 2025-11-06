@@ -59,7 +59,7 @@ const DoctorDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-slate-600">Loading dashboard...</p>
@@ -69,7 +69,7 @@ const DoctorDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 animate-fadeIn">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 animate-fadeIn">
       <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Header */}
@@ -87,7 +87,7 @@ const DoctorDashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Earnings Card */}
-          <div className="bg-linear-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp">
+          <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <p className="text-emerald-100 text-sm font-medium mb-1">Total Earnings</p>
@@ -108,7 +108,7 @@ const DoctorDashboard = () => {
           </div>
 
           {/* Appointments Card */}
-          <div className="bg-linear-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp" style={{ animationDelay: '0.1s' }}>
+          <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp" style={{ animationDelay: '0.1s' }}>
             <div className="flex justify-between items-start mb-4">
               <div>
                 <p className="text-blue-100 text-sm font-medium mb-1">Total Appointments</p>
@@ -129,7 +129,7 @@ const DoctorDashboard = () => {
           </div>
 
           {/* Patients Card */}
-          <div className="bg-linear-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp" style={{ animationDelay: '0.2s' }}>
+          <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-slideUp" style={{ animationDelay: '0.2s' }}>
             <div className="flex justify-between items-start mb-4">
               <div>
                 <p className="text-violet-100 text-sm font-medium mb-1">Total Patients</p>
@@ -188,7 +188,7 @@ const DoctorDashboard = () => {
                   <span className="w-12 text-sm font-medium text-slate-600">{item.day}</span>
                   <div className="flex-1 bg-slate-100 rounded-full h-8 overflow-hidden relative">
                     <div 
-                      className="h-full bg-linear-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out flex items-center justify-end pr-3"
+                      className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out flex items-center justify-end pr-3"
                       style={{ 
                         width: `${(item.earnings / maxValue) * 100}%`,
                         animationDelay: `${index * 0.1}s`

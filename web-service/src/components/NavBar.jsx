@@ -25,8 +25,8 @@ const NavBar = () => {
 
     const navLinkClass = (path) => {
         return isActive(path)
-            ? "text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-500 font-semibold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-linear-to-r after:from-blue-600 after:to-cyan-500 transition-all duration-300"
-            : "text-gray-700 hover:text-transparent hover:bg-clip-text hover:bg-linear-to-r hover:from-blue-600 hover:to-cyan-500 font-medium relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-linear-to-r after:from-blue-600 after:to-cyan-500 after:transition-all after:duration-300 transition-all duration-300";
+            ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 font-semibold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-cyan-500 transition-all duration-300"
+            : "text-gray-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-500 font-medium relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-cyan-500 after:transition-all after:duration-300 transition-all duration-300";
     };
 
     const handleLogout = () => {
@@ -37,10 +37,10 @@ const NavBar = () => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
             scrolled 
-                ? 'bg-white/80 backdrop-blur-lg shadow-lg border-b border-gray-100' 
-                : 'bg-white/95 backdrop-blur-sm shadow-sm'
+                ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100' 
+                : 'bg-white shadow-sm'
         }`}>
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo with animation */}
@@ -51,7 +51,7 @@ const NavBar = () => {
                             alt="Prescripto" 
                             className="w-44 transition-transform duration-300 group-hover:scale-105" 
                         />
-                        <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                        <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
                     </div>
                 </Link>
 
@@ -104,7 +104,7 @@ const NavBar = () => {
                                     <Link
                                         to="/my-profile"
                                         onClick={() => setShowMenu(false)}
-                                        className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-linear-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-300 group"
+                                        className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-300 group"
                                     >
                                         <svg className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -114,7 +114,7 @@ const NavBar = () => {
                                     <Link
                                         to="/my-appointments"
                                         onClick={() => setShowMenu(false)}
-                                        className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-linear-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-300 group"
+                                        className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-300 group"
                                     >
                                         <svg className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -147,7 +147,7 @@ const NavBar = () => {
                             </Link>
                             <Link 
                                 to="/signup" 
-                                className="px-6 py-2.5 text-white bg-linear-to-r from-blue-600 to-cyan-500 rounded-full hover:from-blue-700 hover:to-cyan-600 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-blue-200"
+                                className="px-6 py-2.5 text-white bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full hover:from-blue-700 hover:to-cyan-600 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-blue-200"
                             >
                                 Create account
                             </Link>
