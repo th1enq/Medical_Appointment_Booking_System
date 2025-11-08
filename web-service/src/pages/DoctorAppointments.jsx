@@ -5,11 +5,13 @@ import {
   acceptAppointment as acceptAppointmentAPI, 
   cancelAppointment as cancelAppointmentAPI 
 } from '../data/doctorMockData';
+import CalendarView from '../components/CalendarView';
 
 const DoctorAppointments = () => {
   const [filterStatus, setFilterStatus] = useState('all');
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState('table'); // 'table' or 'calendar'
 
   // Fetch appointments on mount and when filter changes
   useEffect(() => {
@@ -30,6 +32,15 @@ const DoctorAppointments = () => {
   }, [filterStatus]);
 
   const filteredAppointments = appointments;
+
+  // Handle calendar actions
+  const handleCalendarAction = async (action, appointment) => {
+    if (action === 'accept') {
+      await handleAccept(appointment);
+    } else if (action === 'cancel') {
+      await handleCancel(appointment);
+    }
+  };
 
   const getStatusStyle = (status) => {
     switch(status) {
@@ -97,75 +108,116 @@ const DoctorAppointments = () => {
 
         {/* Filter Buttons */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 animate-slideDown">
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setFilterStatus('all')}
-              className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
-                filterStatus === 'all'
-                  ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md transform scale-105'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              All Appointments
-              <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">{appointments.length}</span>
-            </button>
-            <button
-              onClick={() => setFilterStatus('pending')}
-              className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
-                filterStatus === 'pending'
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md transform scale-105'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              Pending
-              <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
-                {appointments.filter(a => a.status === 'pending').length}
-              </span>
-            </button>
-            <button
-              onClick={() => setFilterStatus('confirmed')}
-              className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
-                filterStatus === 'confirmed'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-md transform scale-105'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              Confirmed
-              <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
-                {appointments.filter(a => a.status === 'confirmed').length}
-              </span>
-            </button>
-            <button
-              onClick={() => setFilterStatus('completed')}
-              className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
-                filterStatus === 'completed'
-                  ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md transform scale-105'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              Completed
-              <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
-                {appointments.filter(a => a.status === 'completed').length}
-              </span>
-            </button>
-            <button
-              onClick={() => setFilterStatus('cancelled')}
-              className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
-                filterStatus === 'cancelled'
-                  ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-md transform scale-105'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              Cancelled
-              <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
-                {appointments.filter(a => a.status === 'cancelled').length}
-              </span>
-            </button>
+          <div className="flex flex-wrap gap-3 items-center justify-between">
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => setFilterStatus('all')}
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                  filterStatus === 'all'
+                    ? 'bg-linear-to-r from-blue-500 to-indigo-600 text-white shadow-md transform scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                All Appointments
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">{appointments.length}</span>
+              </button>
+              <button
+                onClick={() => setFilterStatus('pending')}
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                  filterStatus === 'pending'
+                    ? 'bg-linear-to-r from-amber-500 to-orange-600 text-white shadow-md transform scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                Pending
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
+                  {appointments.filter(a => a.status === 'pending').length}
+                </span>
+              </button>
+              <button
+                onClick={() => setFilterStatus('confirmed')}
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                  filterStatus === 'confirmed'
+                    ? 'bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-md transform scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                Confirmed
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
+                  {appointments.filter(a => a.status === 'confirmed').length}
+                </span>
+              </button>
+              <button
+                onClick={() => setFilterStatus('completed')}
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                  filterStatus === 'completed'
+                    ? 'bg-linear-to-r from-emerald-500 to-teal-600 text-white shadow-md transform scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                Completed
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
+                  {appointments.filter(a => a.status === 'completed').length}
+                </span>
+              </button>
+              <button
+                onClick={() => setFilterStatus('cancelled')}
+                className={`px-6 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                  filterStatus === 'cancelled'
+                    ? 'bg-linear-to-r from-red-500 to-rose-600 text-white shadow-md transform scale-105'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                Cancelled
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded-full text-xs">
+                  {appointments.filter(a => a.status === 'cancelled').length}
+                </span>
+              </button>
+            </div>
+
+            {/* View Toggle */}
+            <div className="flex gap-2 bg-slate-50 p-1 rounded-xl border border-slate-200">
+              <button
+                onClick={() => setViewMode('table')}
+                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+                  viewMode === 'table'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-600 hover:bg-slate-100'
+                }`}
+                title="Table View"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span className="font-medium">Table</span>
+              </button>
+              <button
+                onClick={() => setViewMode('calendar')}
+                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+                  viewMode === 'calendar'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-600 hover:bg-slate-100'
+                }`}
+                title="Calendar View"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="font-medium">Calendar</span>
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Appointments Table */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scaleIn">
+        {viewMode === 'calendar' ? (
+          <CalendarView 
+            appointments={filteredAppointments}
+            onHoverAction={handleCalendarAction}
+            role="doctor"
+          />
+        ) : (
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scaleIn">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -268,7 +320,8 @@ const DoctorAppointments = () => {
               <p className="text-slate-500">There are no {filterStatus !== 'all' ? filterStatus : ''} appointments to display.</p>
             </div>
           )}
-        </div>
+          </div>
+        )}
 
       </div>
     </div>

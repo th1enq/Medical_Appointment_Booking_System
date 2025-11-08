@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import LoginPage from './components/Login'
 import {Route, Routes, useLocation} from "react-router-dom"
-import SignUp from './components/Signup'
+import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Home from './pages/Home'

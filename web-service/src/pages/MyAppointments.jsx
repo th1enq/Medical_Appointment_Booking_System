@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { doctors } from '../assets_frontend/assets';
 import { toast } from 'react-toastify';
+import CalendarView from '../components/CalendarView';
 
 const MyAppointments = () => {
     const navigate = useNavigate();
     const { appointments, cancelAppointment, payForAppointment } = useContext(AppContext);
     const [filter, setFilter] = useState('all'); // all, upcoming, completed, cancelled
+    const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
 
     const handleCancelAppointment = (appointmentId) => {
         cancelAppointment(appointmentId);
@@ -33,6 +35,15 @@ const MyAppointments = () => {
     };
 
     const filteredAppointments = getFilteredAppointments();
+
+    // Handle calendar actions
+    const handleCalendarAction = (action, appointment) => {
+        if (action === 'pay') {
+            handlePayment(appointment._id);
+        } else if (action === 'cancel') {
+            handleCancelAppointment(appointment._id);
+        }
+    };
 
     const getStatusBadge = (appointment) => {
         if (appointment.cancelled) {
@@ -74,25 +85,59 @@ const MyAppointments = () => {
 
                 {/* Filter Tabs */}
                 {appointments.length > 0 && (
-                    <div className="flex gap-3 mt-8 flex-wrap animate-scaleIn">
-                        {[
-                            { value: 'all', label: 'All Appointments' },
-                            { value: 'upcoming', label: 'Upcoming' },
-                            { value: 'completed', label: 'Completed' },
-                            { value: 'cancelled', label: 'Cancelled' }
-                        ].map((tab) => (
+                    <div className="flex gap-3 mt-8 flex-wrap animate-scaleIn items-center justify-between">
+                        <div className="flex gap-3 flex-wrap">
+                            {[
+                                { value: 'all', label: 'All Appointments' },
+                                { value: 'upcoming', label: 'Upcoming' },
+                                { value: 'completed', label: 'Completed' },
+                                { value: 'cancelled', label: 'Cancelled' }
+                            ].map((tab) => (
+                                <button
+                                    key={tab.value}
+                                    onClick={() => setFilter(tab.value)}
+                                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                                        filter === tab.value
+                                            ? 'bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
+                                            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                                    }`}
+                                >
+                                    {tab.label}
+                                </button>
+                            ))}
+                        </div>
+                        
+                        {/* View Toggle */}
+                        <div className="flex gap-2 bg-white p-1 rounded-xl border border-gray-200 shadow-sm">
                             <button
-                                key={tab.value}
-                                onClick={() => setFilter(tab.value)}
-                                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                                    filter === tab.value
-                                        ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg scale-105'
-                                        : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                                onClick={() => setViewMode('list')}
+                                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+                                    viewMode === 'list'
+                                        ? 'bg-blue-600 text-white shadow-md'
+                                        : 'text-gray-600 hover:bg-gray-50'
                                 }`}
+                                title="List View"
                             >
-                                {tab.label}
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                                <span className="font-medium">List</span>
                             </button>
-                        ))}
+                            <button
+                                onClick={() => setViewMode('calendar')}
+                                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+                                    viewMode === 'calendar'
+                                        ? 'bg-blue-600 text-white shadow-md'
+                                        : 'text-gray-600 hover:bg-gray-50'
+                                }`}
+                                title="Calendar View"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span className="font-medium">Calendar</span>
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
@@ -100,7 +145,7 @@ const MyAppointments = () => {
             <div className="mx-4 sm:mx-[10%]">
                 {appointments.length === 0 ? (
                     <div className="text-center py-20 animate-fadeIn">
-                        <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-32 h-32 bg-linear-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center mx-auto mb-6">
                             <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -109,7 +154,7 @@ const MyAppointments = () => {
                         <p className="text-gray-600 mb-8">Start your healthcare journey by booking an appointment</p>
                         <button
                             onClick={() => navigate('/doctors')}
-                            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                            className="inline-flex items-center gap-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
                         >
                             <span>Book an Appointment</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,6 +170,15 @@ const MyAppointments = () => {
                         <h3 className="text-2xl font-bold text-gray-900 mb-2">No {filter} appointments</h3>
                         <p className="text-gray-600">Try selecting a different filter</p>
                     </div>
+                ) : viewMode === 'calendar' ? (
+                    <CalendarView 
+                        appointments={filteredAppointments.map(apt => ({
+                            ...apt,
+                            docName: doctors.find(doc => doc._id === apt.docId)?.name
+                        }))}
+                        onHoverAction={handleCalendarAction}
+                        role="user"
+                    />
                 ) : (
                     <div className="grid grid-cols-1 gap-6">
                         {filteredAppointments.map((appointment, index) => {

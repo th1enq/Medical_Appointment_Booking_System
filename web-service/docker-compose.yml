@@ -1,0 +1,30 @@
+services:
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medical-appointment-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - medical-app-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  medical-app-network:
+    driver: bridge
+
+# Usage:
+# Build and start: docker-compose up -d --build
+# Stop: docker-compose down
+# View logs: docker-compose logs -f frontend
+# Restart: docker-compose restart frontend

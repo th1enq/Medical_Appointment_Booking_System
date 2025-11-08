@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getAllAppointments } from '../data/adminMockData';
 import { assets as adminAssets } from '../assets_admin/assets';
+import CalendarView from '../components/CalendarView';
 
 const AdminAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [filterStatus, setFilterStatus] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [viewMode, setViewMode] = useState('table'); // 'table' or 'calendar'
 
   useEffect(() => {
     const data = getAllAppointments();
@@ -39,6 +41,13 @@ const AdminAppointments = () => {
         apt._id === appointmentId ? { ...apt, status: 'cancelled' } : apt
       )
     );
+  };
+
+  // Handle calendar actions
+  const handleCalendarAction = (action, appointment) => {
+    if (action === 'cancel') {
+      handleCancelAppointment(appointment._id);
+    }
   };
 
   const getStatusColor = (status) => {
@@ -91,36 +100,77 @@ const AdminAppointments = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-3 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm w-fit">
-        {[
-          { key: 'all', label: 'All', count: statusCounts.all },
-          { key: 'pending', label: 'Pending', count: statusCounts.pending },
-          { key: 'completed', label: 'Completed', count: statusCounts.completed },
-          { key: 'cancelled', label: 'Cancelled', count: statusCounts.cancelled }
-        ].map(status => (
+      <div className="flex gap-3 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm w-fit items-center">
+        <div className="flex gap-3">
+          {[
+            { key: 'all', label: 'All', count: statusCounts.all },
+            { key: 'pending', label: 'Pending', count: statusCounts.pending },
+            { key: 'completed', label: 'Completed', count: statusCounts.completed },
+            { key: 'cancelled', label: 'Cancelled', count: statusCounts.cancelled }
+          ].map(status => (
+            <button
+              key={status.key}
+              onClick={() => setFilterStatus(status.key)}
+              className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 ${
+                filterStatus === status.key
+                  ? 'bg-linear-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
+                  : 'text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              <span>{status.label}</span>
+              <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                filterStatus === status.key
+                  ? 'bg-white/20 text-white'
+                  : 'bg-slate-100 text-slate-600'
+              }`}>
+                {status.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* View Toggle */}
+        <div className="flex gap-2 bg-slate-50 p-1 rounded-xl ml-4">
           <button
-            key={status.key}
-            onClick={() => setFilterStatus(status.key)}
-            className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 ${
-              filterStatus === status.key
-                ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
-                : 'text-slate-600 hover:bg-slate-50'
+            onClick={() => setViewMode('table')}
+            className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+              viewMode === 'table'
+                ? 'bg-blue-600 text-white shadow-md'
+                : 'text-slate-600 hover:bg-slate-100'
             }`}
+            title="Table View"
           >
-            <span>{status.label}</span>
-            <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
-              filterStatus === status.key
-                ? 'bg-white/20 text-white'
-                : 'bg-slate-100 text-slate-600'
-            }`}>
-              {status.count}
-            </span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span className="font-medium">Table</span>
           </button>
-        ))}
+          <button
+            onClick={() => setViewMode('calendar')}
+            className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
+              viewMode === 'calendar'
+                ? 'bg-blue-600 text-white shadow-md'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+            title="Calendar View"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span className="font-medium">Calendar</span>
+          </button>
+        </div>
       </div>
 
       {/* Appointments Table */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      {viewMode === 'calendar' ? (
+        <CalendarView 
+          appointments={filteredAppointments}
+          onHoverAction={handleCalendarAction}
+          role="admin"
+        />
+      ) : (
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-slate-50">
@@ -250,7 +300,8 @@ const AdminAppointments = () => {
             </div>
           </div>
         )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
